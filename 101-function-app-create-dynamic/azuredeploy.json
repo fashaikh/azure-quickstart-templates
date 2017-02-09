@@ -2,6 +2,9 @@
     "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+    "msdeployPackageUrl": {
+      "type": "string"
+    }
         "appName": {
             "type": "string",
             "metadata": {
@@ -30,6 +33,17 @@
     },
     "resources": [
         {
+          "name": "MSDeploy",
+          "type": "Extensions",
+          "apiVersion": "2015-02-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', toLower(variables('functionAppName')))]"
+          ],
+          "properties": {
+            "packageUri": "[parameters('msdeployPackageUrl')]"
+          }
+        },
+        {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
             "apiVersion": "2015-06-15",
@@ -48,6 +62,18 @@
                 "computeMode": "Dynamic",
                 "sku": "Dynamic"
             }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "metadata",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', toLower(variables('functionAppName')))]",
+            "[resourceId('Microsoft.Web/Sites/Extensions', toLower(variables('functionAppName')), 'MSDeploy')]"
+          ],
+          "properties": {
+            "synctriggersstatus": "[listsyncfunctiontriggerstatus(resourceId('Microsoft.Web/sites', toLower(variables('functionAppName'))), '2015-08-01').status]"
+          }
         },
         {
             "apiVersion": "2015-08-01",
