@@ -4,7 +4,7 @@
     "parameters": {
     "msdeployPackageUrl": {
       "type": "string"
-    }
+    },
         "appName": {
             "type": "string",
             "metadata": {
