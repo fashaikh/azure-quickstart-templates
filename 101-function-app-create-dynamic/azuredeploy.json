@@ -3,7 +3,8 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "msdeployPackageUrl": {
-          "type": "string"
+          "type": "string",
+            "defaultValue":"https://github.com/Azure-Samples/functions-dotnet-sas-token/archive/master.zip"
         },
         "appName": {
             "type": "string",
@@ -32,17 +33,6 @@
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
     },
     "resources": [
-        {
-          "name": "MSDeploy",
-          "type": "Extensions",
-          "apiVersion": "2015-02-01",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/Sites', toLower(variables('functionAppName')))]"
-          ],
-          "properties": {
-            "packageUri": "[parameters('msdeployPackageUrl')]"
-          }
-        },
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
@@ -115,7 +105,20 @@
                         }
                     ]
                 }
-            }          
+            },
+            "resources":[
+                            {
+        "apiVersion": "2015-08-01",
+        "type": "extensions",
+        "name": "MSDeploy",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', toLower(variables('functionAppName')))]"
+          ],
+          "properties": {
+            "packageUri": "[parameters('msdeployPackageUrl')]"
+          }
+        }
+            ]
         }
     ]
 }
