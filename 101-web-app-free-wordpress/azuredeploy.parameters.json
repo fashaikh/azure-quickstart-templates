@@ -1,0 +1,12 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServiceNamePrefix": {
+            "value": "tryapp-"
+        },
+        "msdeployPackageUrl": {
+            "value": "https://github.com/fashaikh/appservice-zipped-templates/raw/master/PHP/WordPress.zip"
+        }
+    }
+}
