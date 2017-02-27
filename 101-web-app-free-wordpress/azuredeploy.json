@@ -8,7 +8,7 @@
         },
         "appServiceNamePrefix": {
             "type": "string",
-            "defaultValue": "tryapp-",
+            "defaultValue": "[toLower(concat('trywordpress-', uniqueString(resourceGroup().id)))]",
             "metadata": {
                 "description": "The prefix string to add to a generated string that is unique to the resourceGroup."
             }
@@ -16,7 +16,7 @@
 
     },
     "variables": {
-        "appServiceName": "[toLower( concat( parameters('appServiceNamePrefix'), uniqueString(resourceGroup().id)))]",
+        "appServiceName": "[toLower(parameters('appServiceNamePrefix'))]",
         "hostingPlanName": "[toLower( concat(variables('appServiceName'), '-freeplan' ))]"
     },
     "resources": [{
