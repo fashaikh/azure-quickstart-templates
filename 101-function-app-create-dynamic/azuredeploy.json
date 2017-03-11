@@ -4,7 +4,7 @@
    "parameters":{
       "msdeployPackageUrl":{
          "type":"string",
-         "defaultValue":"https://appserviceemailertest.blob.core.windows.net/armdeploy/master.zip?st=2017-02-21T23%3A24%3A00Z&se=2017-02-22T23%3A24%3A00Z&sp=rl&sv=2015-12-11&sr=b&sig=GHiAWdEvzev9U6uifEdS1sQOOYyeDp50DY25x08WcOw%3D"
+         "defaultValue":"https://githubrezip-bay.azurewebsites.net/fashaikh/azure-quickstart-templates/master"
       },
       "appName":{
          "type":"string",
@@ -113,10 +113,7 @@
                "dependsOn":[
                   "[resourceId('Microsoft.Web/Sites', toLower(variables('functionAppName')))]",
                   "[resourceId('Microsoft.Web/Sites/Extensions', toLower(variables('functionAppName')), 'MSDeploy')]"
-               ],
-               "properties":{
-                  "synctriggersstatus":"[listsyncfunctiontriggerstatus(resourceId('Microsoft.Web/sites', toLower(variables('functionAppName'))), '2015-08-01').status]"
-               }
+               ]
             }
          ]
       }
