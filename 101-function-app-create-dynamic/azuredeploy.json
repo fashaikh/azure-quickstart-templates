@@ -4,7 +4,7 @@
    "parameters":{
       "msdeployPackageUrl":{
          "type":"string",
-         "defaultValue":"https://zip-bay-031-ls.azurewebsites.net/fashaikh/functions-dotnet-sas-token/master.zip"
+         "defaultValue":"https://wawsgithubrezip-bay.azurewebsites.net/Azure-Samples/functions-dotnet-sas-token/master.zip"
       },
       "appName":{
          "type":"string",
