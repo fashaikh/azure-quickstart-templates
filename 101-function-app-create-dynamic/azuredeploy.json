@@ -105,15 +105,6 @@
                "properties":{
                   "packageUri":"[parameters('msdeployPackageUrl')]"
                }
-            },
-            {
-               "apiVersion":"2015-08-01",
-               "name":"metadata",
-               "type":"config",
-               "dependsOn":[
-                  "[resourceId('Microsoft.Web/Sites', toLower(variables('functionAppName')))]",
-                  "[resourceId('Microsoft.Web/Sites/Extensions', toLower(variables('functionAppName')), 'MSDeploy')]"
-               ]
             }
          ]
       }
