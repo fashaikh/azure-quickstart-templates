@@ -4,7 +4,7 @@
    "parameters":{
       "msdeployPackageUrl":{
             "type":"string",
-         "defaultValue":"http://maws-zip.trafficmanager.net/Azure-Samples/functions-dotnet-sas-token/master"
+         "defaultValue":"https://maws-zip.trafficmanager.net/Azure-Samples/functions-dotnet-sas-token/master"
       },
       "appName":{
          "type":"string",
