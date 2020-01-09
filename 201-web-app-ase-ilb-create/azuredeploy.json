@@ -152,6 +152,7 @@
         "apiVersion": "2015-08-01",
         "type": "Microsoft.Web/hostingEnvironments",
         "name": "[parameters('aseName')]",
+        "kind": "ASEV1",
         "location": "[parameters('aseLocation')]",
         "properties": {
           "name": "[parameters('aseName')]",
